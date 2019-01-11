@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+roussel_yanah@hotmail.be
+08/01/2018
+-->
+<html>
+<head>
+<script src="mimic/mimic.js" language="javascript"></script>
+</head>
+<body>
+<h3>Yanah's weather request:</h3>
+
+<p id="weatherReportParagraph"></p>
+<script language="javascript">
+function loadXMLDoc()
+{
+
+	var weatherReport= new XmlRpcRequest("http://localhost:9000/RPC2", "get_weather_station_location");
+	var answer_location = get_location.send();
+	var answer_location.parseXML();
+
+	var weatherReport= new XmlRpcRequest("http://localhost:9000/RPC2", "get_weather_station_coordinates");
+	var answer_coordinates = get_oordinates.send();
+	var answer_coordinates.parseXML();
+
+	var weatherReport= new XmlRpcRequest("http://localhost:9000/RPC2", "get_temperature");
+	var answer_temperature = get_temperature.send();
+	var answer_temperature.parseXML();
+
+	var weatherReport= new XmlRpcRequest("http://localhost:9000/RPC2", "get_wind_direction");
+	var answer_direction = get_direction.send();
+	var answer_direction.parseXML();
+
+	var weatherReport= new XmlRpcRequest("http://localhost:9000/RPC2", "get_wind_speed");
+	var answer_speed = get_speed.send();
+	var answer_speed.parseXML();
+
+	document.getElementById("weatherReportParagraph").innerHTML=weatherReport;
+}
+</script>
+</body>
+</html>
